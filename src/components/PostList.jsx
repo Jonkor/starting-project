@@ -8,6 +8,13 @@ export const PostList = ({ isPosting,  onStopPosting}) => {
   const [posts, setPosts] = useState([]);
 
   const addPostHandler = (postData) => {
+    fetch('http://localhost:8080/posts', {
+      method: 'POST',
+      body: JSON.stringify(postData),
+      headers: {
+        'Content-type': 'application/json'
+      }
+    });
     setPosts((existingPosts) => [postData, ...existingPosts]);
   };
 
